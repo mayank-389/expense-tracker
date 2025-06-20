@@ -4,14 +4,12 @@ from datetime import datetime
 
 FILENAME = "expenses.csv"
 
-# Ensure CSV exists
 def init_file():
     if not os.path.exists(FILENAME):
         with open(FILENAME, mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(["Date", "Category", "Amount", "Note"])
 
-# Add a new expense
 def add_expense():
     category = input("Enter category (e.g., food, travel): ").strip()
     amount = input("Enter amount (₹): ").strip()
@@ -26,7 +24,6 @@ def add_expense():
         writer.writerow([datetime.now().strftime("%Y-%m-%d"), category, amount, note])
     print(f"✅ Added ₹{amount} to {category} ({note})\n")
 
-# View all expenses
 def show_expenses():
     print("\n📋 All Expenses:")
     print("-" * 50)
@@ -40,7 +37,6 @@ def show_expenses():
         print("No expenses found yet.")
     print("-" * 50 + "\n")
 
-# Show total spending
 def total_expense():
     total = 0
     try:
@@ -55,7 +51,6 @@ def total_expense():
 
     print(f"\n💰 Total Spent: ₹{total}\n")
 
-# Main menu
 def main_menu():
     init_file()
     while True:
